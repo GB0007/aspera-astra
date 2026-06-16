@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspera Astra · Intuitive Healer</title>
+  <meta name="description" content="Intuitive readings to guide you back to clarity, balance, and inner light.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --sky-deep: #05072B;
+      --sky-mid: #0A0E45;
+      --sky-soft: #121852;
+      --glow-blue: #00AEEF;
+      --glow-blue-soft: rgba(0, 174, 239, 0.35);
+      --glow-blue-dim: rgba(0, 174, 239, 0.12);
+      --sunset-orange: #D35400;
+      --sunset-rose: #A04077;
+      --sunset-crimson: #7B241C;
+      --warm-glow: rgba(211, 84, 0, 0.25);
+      --cream: #F2E9E4;
+      --cream-soft: rgba(242, 233, 228, 0.72);
+      --cream-muted: rgba(242, 233, 228, 0.5);
+      --charcoal: #0D0D0D;
+      --heading: 'Cormorant Garamond', Georgia, serif;
+      --body: 'Montserrat', sans-serif;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: 0.6s var(--ease);
+    }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      touch-action: pan-y;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--sky-deep);
+      color: var(--cream);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--glow-blue);
+      color: var(--sky-deep);
+    }
+
+    /* ─── Ambient background ─── */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 100%, var(--warm-glow) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(160, 64, 119, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 30% at 80% 15%, rgba(123, 36, 28, 0.12) 0%, transparent 45%),
+        linear-gradient(180deg, var(--sky-deep) 0%, var(--sky-mid) 45%, #0d1038 100%);
+    }
+
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-bg__field {
+      position: absolute;
+      inset: 0;
+      background: var(--charcoal);
+    }
+
+    .hero-bg__plate {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(94vw, 840px);
+      height: min(94vw, 840px);
+    }
+
+    .hero-bg__image {
+      position: absolute;
+      inset: 0;
+      background: url('assets/hero.png') center / contain no-repeat;
+      opacity: 0;
+      animation: bgReveal 2s var(--ease) forwards;
+    }
+
+    .hero-bg__fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 62%,
+        rgba(5, 7, 43, 0.45) 82%,
+        var(--sky-deep) 100%
+      );
+    }
+
+    .hero-bg__glow {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      width: min(70vw, 520px);
+      height: min(70vw, 520px);
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, var(--glow-blue-soft) 0%, transparent 68%);
+      opacity: 0.25;
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.4;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 30% 60%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 70% 30%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 90% 70%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 50% 10%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 15% 85%, var(--cream-muted) 50%, transparent 50%),
+        radial-gradient(1px 1px at 85% 45%, var(--cream-muted) 50%, transparent 50%);
+    }
+
+    /* ─── Wavy circle lines ─── */
+    .wave-field {
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .wave-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      will-change: transform;
+    }
+
+    .wave-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wave-strand-path {
+      fill: none;
+      stroke: rgba(0, 174, 239, 0.55);
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .wave-node {
+      --reveal: 0;
+      --depth: 1;
+      --twist: 0deg;
+      position: absolute;
+      width: var(--node-size, 36px);
+      height: var(--node-size, 36px);
+      opacity: calc(var(--reveal) * var(--depth));
+      transform: translate3d(-50%, -50%, 0) rotate(var(--twist)) scale(calc(0.04 + var(--reveal) * 0.96));
+      transform-origin: center center;
+    }
+
+    .wave-link {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 174, 239, 0.06),
+        rgba(0, 174, 239, 0.5),
+        rgba(0, 174, 239, 0.06)
+      );
+      transform-origin: center center;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .wave-link--rung {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 174, 239, 0.14),
+        rgba(0, 174, 239, 0.42),
+        rgba(0, 174, 239, 0.14)
+      );
+    }
+
+    .wave-link--strand {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 174, 239, 0.06),
+        rgba(0, 174, 239, 0.55),
+        rgba(0, 174, 239, 0.06)
+      );
+    }
+
+    .wave-node__halo {
+      position: absolute;
+      inset: -22%;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(0, 174, 239, 0.34) 0%,
+        rgba(0, 174, 239, 0.14) 45%,
+        transparent 68%
+      );
+      filter: blur(4px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.4);
+      transform-origin: center center;
+    }
+
+    .wave-node__svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      color: rgba(0, 174, 239, 0.84);
+      z-index: 1;
+    }
+
+    .wave-node__svg circle,
+    .wave-node__svg polygon,
+    .wave-node__svg path,
+    .wave-node__svg line {
+      vector-effect: non-scaling-stroke;
+    }
+
+    .wave-node--large .wave-node__svg {
+      color: rgba(0, 174, 239, 0.92);
+    }
+
+    .wave-node--large .wave-node__halo {
+      inset: -38%;
+      background: radial-gradient(
+        circle,
+        rgba(0, 174, 239, 0.42) 0%,
+        rgba(0, 174, 239, 0.18) 42%,
+        transparent 72%
+      );
+    }
+
+    /* ─── Navigation ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(5, 7, 43, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 174, 239, 0.08);
+    }
+
+    .nav__logo {
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream-soft);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav__links a:hover { color: var(--glow-blue); }
+
+    .nav__social {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav__social svg,
+    .nav__social img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav__donate {
+      display: inline-flex;
+      align-items: center;
+      letter-spacing: normal;
+      text-transform: none;
+      opacity: 1;
+    }
+
+    .nav__donate:hover {
+      color: inherit;
+      opacity: 0.85;
+    }
+
+    .nav__donate img {
+      display: block;
+      height: 36px;
+      border: 0;
+    }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav__toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream);
+      margin: 6px 0;
+      transition: var(--transition);
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      z-index: 5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 7rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .hero__content {
+      max-width: 560px;
+    }
+
+    .hero__eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 24px rgba(0, 174, 239, 0.4);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.5s forwards;
+    }
+
+    .hero__title {
+      font-family: var(--heading);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 2px 40px rgba(5, 7, 43, 0.9), 0 0 80px rgba(5, 7, 43, 0.6);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.7s forwards;
+    }
+
+    .hero__subtitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--cream-soft);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      text-shadow: 0 1px 24px rgba(5, 7, 43, 0.95);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.9s forwards;
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 1.1s forwards;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      font-family: var(--body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 0;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      background: transparent;
+      color: var(--glow-blue);
+      border: 1px solid var(--glow-blue);
+      box-shadow: 0 0 20px var(--glow-blue-dim), inset 0 0 20px transparent;
+    }
+
+    .btn--primary:hover {
+      background: var(--glow-blue-dim);
+      box-shadow: 0 0 30px var(--glow-blue-soft), inset 0 0 30px var(--glow-blue-dim);
+      color: var(--cream);
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--cream-soft);
+      border: 1px solid rgba(242, 233, 228, 0.25);
+    }
+
+    .btn--secondary:hover {
+      border-color: var(--sunset-orange);
+      color: var(--cream);
+      box-shadow: 0 0 20px var(--warm-glow);
+    }
+
+    /* ─── Sections ─── */
+    section {
+      position: relative;
+      z-index: 5;
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--cream-soft);
+      font-weight: 300;
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .readings__disclosure {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+
+    .readings__disclosure p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--cream-soft);
+      margin: 0;
+    }
+
+    .readings__disclosure p + p {
+      margin-top: 0.85rem;
+    }
+
+    /* ─── Intuitive Readings ─── */
+    .readings {
+      background: linear-gradient(180deg, rgba(5, 7, 43, 0.62) 0%, rgba(10, 14, 69, 0.48) 50%, rgba(5, 7, 43, 0.62) 100%);
+    }
+
+    .readings__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(0, 174, 239, 0.12);
+      background: rgba(10, 14, 69, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glow-blue), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(0, 174, 239, 0.3);
+      box-shadow: 0 0 40px var(--glow-blue-dim);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card__icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      color: var(--glow-blue);
+    }
+
+    .service-card__title {
+      font-family: var(--heading);
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .service-card__text {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card__includes {
+      list-style: none;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card__includes li {
+      padding: 0.35rem 0;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .service-card__includes li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--glow-blue);
+    }
+
+    .service-card__options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card__option-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card__option-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 0;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .service-card__option {
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(0, 174, 239, 0.1);
+    }
+
+    .service-card__option:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .service-card__option-text {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.7;
+      margin-bottom: 0.35rem;
+    }
+
+    .service-card__option-cost {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin: 0;
+    }
+
+    .service-card__book-btn {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 0.35rem 0.7rem;
+      font-family: var(--body);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+      color: var(--glow-blue);
+      border: 1px solid rgba(0, 174, 239, 0.4);
+      background: rgba(0, 174, 239, 0.08);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card__book-btn:hover {
+      background: rgba(0, 174, 239, 0.18);
+      color: var(--cream);
+      box-shadow: 0 0 16px var(--glow-blue-dim);
+    }
+
+    .service-card__link {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .service-card__link:hover { color: var(--cream); }
+
+    .readings__pro-bono {
+      margin-top: 4rem;
+      padding: 2.75rem 2rem 3rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      border: 1px solid rgba(0, 174, 239, 0.18);
+      background: rgba(10, 14, 69, 0.32);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .readings__pro-bono-title {
+      font-family: var(--heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .readings__pro-bono-text {
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--cream-soft);
+      margin-bottom: 2rem;
+    }
+
+    .readings__pro-bono-form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .readings__pro-bono-form input,
+    .readings__pro-bono-form textarea {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(10, 14, 69, 0.5);
+      border: 1px solid rgba(0, 174, 239, 0.15);
+      color: var(--cream);
+      font-family: var(--body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .readings__pro-bono-form input::placeholder,
+    .readings__pro-bono-form textarea::placeholder {
+      color: var(--cream-muted);
+    }
+
+    .readings__pro-bono-form input:focus,
+    .readings__pro-bono-form textarea:focus {
+      border-color: var(--glow-blue);
+      box-shadow: 0 0 20px var(--glow-blue-dim);
+    }
+
+    .readings__pro-bono-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .readings__pro-bono-form input[type="file"] {
+      padding: 0.85rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--cream-soft);
+    }
+
+    .readings__pro-bono-form input[type="file"]::file-selector-button {
+      margin-right: 1rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(0, 174, 239, 0.35);
+      background: rgba(0, 174, 239, 0.1);
+      color: var(--glow-blue);
+      font-family: var(--body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .readings__pro-bono-form .btn {
+      width: 100%;
+      margin-top: 0.25rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .readings__pro-bono-note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      line-height: 1.6;
+      margin-top: 0.25rem;
+    }
+
+    /* ─── About ─── */
+    .about {
+      position: relative;
+      overflow: hidden;
+      background: rgba(5, 7, 43, 0.58);
+    }
+
+    .about .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about__layout {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, 320px);
+      gap: 2.5rem;
+      align-items: stretch;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .about__image {
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+      width: 100%;
+      isolation: isolate;
+      background: linear-gradient(180deg, var(--sky-deep) 0%, var(--sky-mid) 55%, #0d1038 100%);
+    }
+
+    .about__image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: lighten;
+      opacity: 0.88;
+      -webkit-mask-image: radial-gradient(
+        ellipse 100% 100% at 50% 46%,
+        rgba(0, 0, 0, 1) 42%,
+        rgba(0, 0, 0, 0.75) 68%,
+        rgba(0, 0, 0, 0.25) 88%,
+        transparent 100%
+      );
+      mask-image: radial-gradient(
+        ellipse 100% 100% at 50% 46%,
+        rgba(0, 0, 0, 1) 42%,
+        rgba(0, 0, 0, 0.75) 68%,
+        rgba(0, 0, 0, 0.25) 88%,
+        transparent 100%
+      );
+    }
+
+    .about__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      opacity: 0.4;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(
+        ellipse 98% 100% at 50% 48%,
+        transparent 38%,
+        rgba(0, 0, 0, 0.55) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      mask-image: radial-gradient(
+        ellipse 98% 100% at 50% 48%,
+        transparent 38%,
+        rgba(0, 0, 0, 0.55) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+
+    .about__content {
+      min-width: 0;
+    }
+
+    .about__text p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .about__text p:last-child { margin-bottom: 0; }
+
+    .about__quote {
+      font-family: var(--heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cream);
+      text-align: center;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      margin-top: 2.5rem;
+    }
+
+    /* ─── Contact ─── */
+    .contact {
+      text-align: center;
+      padding-bottom: 8rem;
+      background: linear-gradient(180deg, rgba(5, 7, 43, 0.58) 0%, rgba(5, 7, 43, 0.78) 100%);
+    }
+
+    .contact__form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact__form input,
+    .contact__form textarea {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(10, 14, 69, 0.5);
+      border: 1px solid rgba(0, 174, 239, 0.15);
+      color: var(--cream);
+      font-family: var(--body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact__form input::placeholder,
+    .contact__form textarea::placeholder {
+      color: var(--cream-muted);
+    }
+
+    .contact__form input:focus,
+    .contact__form textarea:focus {
+      border-color: var(--glow-blue);
+      box-shadow: 0 0 20px var(--glow-blue-dim);
+    }
+
+    .contact__form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact__form .btn {
+      margin-top: 0.5rem;
+      width: 100%;
+      border: none;
+      background: linear-gradient(135deg, rgba(0, 174, 239, 0.2), rgba(211, 84, 0, 0.15));
+      color: var(--cream);
+      border: 1px solid rgba(0, 174, 239, 0.4);
+    }
+
+    .contact__form .btn:hover {
+      background: linear-gradient(135deg, rgba(0, 174, 239, 0.35), rgba(211, 84, 0, 0.25));
+      box-shadow: 0 0 40px var(--glow-blue-soft);
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(0, 174, 239, 0.08);
+      background: var(--sky-deep);
+    }
+
+    .footer p,
+    .footer__copy {
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--cream-muted);
+      margin: 0;
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer__contact a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--glow-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer__contact a:hover {
+      color: var(--cream);
+    }
+
+    .footer__contact span {
+      color: rgba(0, 174, 239, 0.25);
+      font-size: 0.65rem;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes bgReveal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .nav__links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background: rgba(5, 7, 43, 0.97);
+        backdrop-filter: blur(20px);
+        transition: right 0.4s var(--ease);
+        border-left: 1px solid rgba(0, 174, 239, 0.1);
+      }
+
+      .nav__links.open { right: 0; }
+
+      .nav__toggle { display: block; }
+
+      .readings__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .about__layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about__image {
+        position: static;
+        width: 100%;
+        margin: 0 auto;
+        order: -1;
+      }
+
+      .about__image img {
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+        object-position: unset;
+        mix-blend-mode: lighten;
+        opacity: 0.92;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 1) 5%,
+          rgba(0, 0, 0, 1) 90%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 1) 5%,
+          rgba(0, 0, 0, 1) 90%,
+          transparent 100%
+        );
+      }
+
+      .about__image::after {
+        opacity: 0.35;
+      }
+
+      .about__content {
+        max-width: 100%;
+      }
+
+      section { padding: 4rem 1.5rem; }
+
+      .hero-bg__plate {
+        top: 32%;
+        width: min(98vw, 840px);
+        height: min(98vw, 840px);
+      }
+
+      .hero-bg__glow {
+        top: 28%;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-bg__plate {
+        top: 28%;
+      }
+
+      .hero-bg__glow {
+        top: 24%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true"></div>
+
+  <div class="hero-bg" role="img" aria-label="Cosmic mandala over a sunset horizon, intuitive healing artwork blended into the background">
+    <div class="hero-bg__field" aria-hidden="true"></div>
+    <div class="hero-bg__glow" aria-hidden="true"></div>
+    <div class="hero-bg__plate" aria-hidden="true">
+      <div class="hero-bg__image"></div>
+    </div>
+    <div class="hero-bg__fade" aria-hidden="true"></div>
+  </div>
+
+  <div class="stars" aria-hidden="true"></div>
+
+  <div class="wave-field" id="wave-field" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo">Aspera Astra</a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="#intuitive-readings">Intuitive Readings</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+      <li>
+        <a
+          href="https://www.instagram.com/asperaastra_healingspirit"
+          class="nav__social"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow me on Instagram"
+        >
+          Follow Me
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://ko-fi.com/V5K32149ZX"
+          class="nav__donate"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Donate on Ko-fi"
+        >
+          <img
+            src="https://storage.ko-fi.com/cdn/kofi6.png?v=6"
+            height="36"
+            alt="Buy Me a Coffee at ko-fi.com"
+          >
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Intuitive Healer</p>
+      <h1 class="hero__title">Aspera Astra</h1>
+      <p class="hero__subtitle">
+        Guiding you through the spaces between where intuition meets healing,
+        and clarity begins to bloom.
+      </p>
+      <div class="hero__cta">
+        <a href="#intuitive-readings" class="btn btn--primary">Intuitive Readings</a>
+        <a href="#contact" class="btn btn--secondary">Contact Me</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="readings" id="intuitive-readings">
+    <div class="section-inner">
+      <p class="section-label reveal">What I Offer</p>
+      <h2 class="section-title reveal">Intuitive Readings</h2>
+
+      <div class="readings__disclosure reveal">
+        <p>
+          My work is rooted in intuitive energy. What comes through in a reading is not always
+          a glimpse of the future. More often, it is what you need to hear right now to grow.
+        </p>
+        <p>
+          I believe the future is fluid. We are here to learn lessons, and those lessons may show up
+          in many different ways.
+        </p>
+      </div>
+
+      <div class="readings__grid">
+        <article class="service-card reveal">
+          <svg class="service-card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="0.75" opacity="0.6"/>
+            <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            <path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+          </svg>
+          <h3 class="service-card__title">Essential Reading</h3>
+          <p class="service-card__text">
+            A focused intuitive reading using your photo to illuminate the patterns,
+            questions, and opportunities calling for your attention.
+          </p>
+          <div class="service-card__options">
+            <div class="service-card__option">
+              <div class="service-card__option-head">
+                <p class="service-card__option-title">Via Email</p>
+                <a href="https://ko-fi.com/V5K32149ZX" class="service-card__book-btn" target="_blank" rel="noopener noreferrer">Book</a>
+              </div>
+              <p class="service-card__option-text">
+                Send me your photo and I'll respond with a written reading sharing
+                what I intuitively pick up for you.
+              </p>
+              <p class="service-card__option-cost">Donation basis · US dollars</p>
+            </div>
+            <div class="service-card__option">
+              <div class="service-card__option-head">
+                <p class="service-card__option-title">Via Chat</p>
+                <a href="readings.html?tier=essential&modality=chat#book" class="service-card__book-btn">Book</a>
+              </div>
+              <p class="service-card__option-text">
+                A 15-minute live session where we can talk through your reading
+                and explore the questions on your mind.
+              </p>
+              <p class="service-card__option-cost">$20 US dollars</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-card reveal">
+          <svg class="service-card__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+            <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="0.75" opacity="0.6"/>
+            <path d="M24 6v36M6 24h36" stroke="currentColor" stroke-width="0.75" opacity="0.35"/>
+            <path d="M10.5 10.5l27 27M37.5 10.5l-27 27" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+            <circle cx="24" cy="14" r="2" fill="currentColor" opacity="0.7"/>
+            <circle cx="34" cy="24" r="2" fill="currentColor" opacity="0.7"/>
+            <circle cx="24" cy="34" r="2" fill="currentColor" opacity="0.7"/>
+            <circle cx="14" cy="24" r="2" fill="currentColor" opacity="0.7"/>
+          </svg>
+          <h3 class="service-card__title">Complete Reading</h3>
+          <p class="service-card__text">
+            A comprehensive reading weaving together intuitive insight, palmistry,
+            and your Vedic natal chart for a fuller picture of your path.
+          </p>
+          <div class="service-card__options">
+            <div class="service-card__option">
+              <div class="service-card__option-head">
+                <p class="service-card__option-title">Via Email</p>
+                <a href="readings.html?tier=complete&modality=email#book" class="service-card__book-btn">Book</a>
+              </div>
+              <p class="service-card__option-text">
+                Send your photo, palm images, and birth details. I'll respond with
+                a comprehensive written reading of everything I pick up for you.
+              </p>
+              <p class="service-card__option-cost">$40 US dollars</p>
+            </div>
+            <div class="service-card__option">
+              <div class="service-card__option-head">
+                <p class="service-card__option-title">Via Chat</p>
+                <a href="readings.html?tier=complete&modality=chat#book" class="service-card__book-btn">Book</a>
+              </div>
+              <p class="service-card__option-text">
+                A 30-minute live session where we can walk through your full reading
+                and explore the questions on your mind.
+              </p>
+              <p class="service-card__option-cost">$75 US dollars</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="readings__pro-bono reveal" id="pro-bono">
+        <h3 class="readings__pro-bono-title">Pro Bono Readings</h3>
+        <p class="readings__pro-bono-text">
+          I offer pro bono readings to people who are in need and cannot afford help.
+          To apply, please share your name and the country where you live, along with
+          proof of your circumstances.
+        </p>
+
+        <form
+          class="readings__pro-bono-form"
+          action="https://formsubmit.co/aspera.astra.readings@gmail.com"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="_subject" value="Pro bono application — Aspera Astra website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="name" placeholder="Your Name" required aria-label="Your name">
+          <input type="text" name="country" placeholder="Country Where You Live" required aria-label="Country where you live">
+          <input type="email" name="email" placeholder="Your Email" required aria-label="Your email">
+          <textarea
+            name="message"
+            placeholder="Tell me about your situation and share any proof or context that supports your application."
+            required
+            aria-label="Your application message"
+          ></textarea>
+          <input type="file" name="proof" accept="image/*" required aria-label="Upload a photo showing where you live, with you in the picture">
+          <p class="readings__pro-bono-note">Attach a photo that shows where you live (you must be in the picture).</p>
+          <button type="submit" class="btn btn--secondary">Apply for Pro Bono Readings</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="section-inner">
+      <p class="section-label reveal">The Space Between</p>
+      <h2 class="section-title reveal">About</h2>
+
+      <div class="about__layout">
+        <div class="about__content">
+          <div class="about__text reveal">
+          <p>
+            Hello, my name is Aspera Astra and I am an intuitive healer. My name means
+            "through hardship to the stars," and it reflects my belief that our deepest wounds
+            often hold the keys to our greatest transformation. I work as a conduit, not a
+            director: holding space for what wants to emerge in you.
+          </p>
+          <p>
+            Two years ago, during an Ayahuasca ceremony, I experienced a profound spiritual
+            awakening that changed the course of my life. During that experience, I made contact
+            with spirit guides who called me to a path of service. What began as a personal
+            transformation evolved into a deep connection with the spirit world and a commitment
+            to helping others.
+          </p>
+          <p>
+            Since then, I have dedicated myself to developing this connection through meditation,
+            spiritual practice, and direct work with my guides. Today, I offer intuitive readings
+            and spiritual guidance to help people navigate life's challenges, transitions,
+            relationships, and questions of purpose.
+          </p>
+          <p>
+            My practice weaves intuitive perception with energetic healing, honoring both
+            the seen and unseen dimensions of your experience. Every session is unique,
+            guided by what your spirit is ready to receive. I approach every session with
+            compassion, honesty, and respect. My role is not to tell you what to believe or
+            what decisions to make, but to share the messages, insights, and perspectives
+            that come through so that you can move forward with greater clarity and confidence.
+          </p>
+          <p>
+            Thank you for your trust and support. I am honored to be part of your journey.
+          </p>
+        </div>
+        <div class="reveal">
+          <blockquote class="about__quote">
+            "The answers you seek are already within you,
+            sometimes you just need someone to help you hear them."
+          </blockquote>
+        </div>
+        </div>
+
+        <figure class="about__image reveal">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/about-sunset-mobile.png">
+            <img
+              src="assets/about-sunset.png"
+              alt="Sunset over a calm ocean with the sun glowing at the horizon"
+              width="410"
+              height="1024"
+            >
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <p class="section-label reveal">Begin Your Journey</p>
+      <h2 class="section-title reveal">Say Hello</h2>
+      <p class="section-desc reveal">
+        Fill in the form below to inquire about a reading.
+      </p>
+
+      <form class="contact__form reveal" action="https://formsubmit.co/aspera.astra.readings@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry — Aspera Astra website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="text" name="name" placeholder="Your Name" required aria-label="Your name">
+        <input type="email" name="email" placeholder="Your Email" required aria-label="Your email">
+        <textarea name="message" placeholder="Share what brings you here..." required aria-label="Your message"></textarea>
+        <button type="submit" class="btn">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__contact">
+      <a href="mailto:aspera.astra.readings@gmail.com">aspera.astra.readings@gmail.com</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.instagram.com/asperaastra_healingspirit" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+    <p class="footer__copy">&copy; 2026 Aspera Astra · Intuitive Healer</p>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav__toggle');
+    const links = document.querySelector('.nav__links');
+    let scrollTicking = false;
+
+    function updateScrollEffects() {
+      const scrollY = window.scrollY;
+
+      nav.classList.toggle('scrolled', scrollY > 40);
+
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) {
+        const fade = Math.min(scrollY / (window.innerHeight * 0.85), 1);
+        heroBg.style.opacity = String(1 - fade * 0.85);
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          updateScrollEffects();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    updateScrollEffects();
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.contact__form, .readings__pro-bono-form').forEach(form => {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Sending…';
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/aspera.astra.readings@gmail.com', {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(form)
+          });
+
+          if (!response.ok) throw new Error('Send failed');
+
+          const isProBono = form.classList.contains('readings__pro-bono-form');
+          alert(
+            isProBono
+              ? 'Thank you. Your pro bono application has been sent.'
+              : 'Thank you for reaching out. Your inquiry has been sent.'
+          );
+          form.reset();
+        } catch (err) {
+          alert('Something went wrong. Please email aspera.astra.readings@gmail.com directly.');
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      });
+    });
+  </script>
+  <script src="assets/wave-circles.js"></script>
+</body>
+</html>
