@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Reading · Via WhatsApp Chat · Aspera Astra</title>
+  <meta name="description" content="Book a Full Reading via 30-minute WhatsApp chat. Share your details, then continue to secure payment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --sky-deep: #05072B;
+      --sky-mid: #0A0E45;
+      --glow-blue: #00AEEF;
+      --glow-blue-soft: rgba(0, 174, 239, 0.35);
+      --glow-blue-dim: rgba(0, 174, 239, 0.12);
+      --cream: #F2E9E4;
+      --cream-soft: rgba(242, 233, 228, 0.72);
+      --cream-muted: rgba(242, 233, 228, 0.5);
+      --heading: 'Cormorant Garamond', Georgia, serif;
+      --body: 'Montserrat', sans-serif;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --transition: 0.6s var(--ease);
+    }
+
+    html { scroll-behavior: auto; font-size: 118.75%; }
+
+    body {
+      font-family: var(--body);
+      background: var(--sky-deep);
+      color: var(--cream);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      touch-action: pan-y;
+    }
+
+    ::selection { background: var(--glow-blue); color: var(--sky-deep); }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 10%, rgba(255, 252, 235, 0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 68% 48% at 62% 94%, rgba(139, 58, 98, 0.2) 0%, transparent 58%),
+        radial-gradient(ellipse 95% 58% at 50% 100%, rgba(211, 84, 0, 0.27) 0%, rgba(160, 64, 119, 0.16) 36%, rgba(112, 48, 120, 0.1) 52%, transparent 72%),
+        radial-gradient(ellipse 50% 38% at 16% 12%, rgba(160, 64, 119, 0.18) 0%, transparent 50%),
+        linear-gradient(180deg, #020208 0%, var(--sky-deep) 28%, #0a1248 58%, #152560 80%, #1c3078 100%);
+    }
+
+    .night-sky {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .page-hero__moon-wrap {
+      position: relative;
+      width: clamp(62px, 10vw, 96px);
+      height: clamp(62px, 10vw, 96px);
+      margin: 0 auto 1.75rem;
+      flex-shrink: 0;
+    }
+
+    .page-hero__moon-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -45%;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(0, 174, 239, 0.42) 0%,
+        rgba(0, 174, 239, 0.22) 38%,
+        rgba(0, 174, 239, 0.08) 58%,
+        transparent 72%
+      );
+      filter: blur(8px);
+      z-index: 0;
+    }
+
+    .page-hero__moon {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 36% 34%, #fffef8 0%, #f7f2e4 28%, #ebe3cf 58%, #d8cdb5 100%);
+      box-shadow:
+        0 0 18px rgba(255, 252, 238, 0.35),
+        0 0 32px rgba(0, 174, 239, 0.28),
+        inset -8px -6px 16px rgba(170, 158, 130, 0.22);
+    }
+
+    .page-hero__moon::before {
+      content: '';
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      top: 26%;
+      left: 20%;
+      border-radius: 50%;
+      background: rgba(195, 185, 158, 0.32);
+      box-shadow:
+        28px 18px 0 -4px rgba(185, 175, 148, 0.22),
+        12px 42px 0 -6px rgba(180, 170, 145, 0.18);
+    }
+
+    .page-hero__moon::after {
+      content: '';
+      position: absolute;
+      width: 14%;
+      height: 14%;
+      top: 54%;
+      left: 58%;
+      border-radius: 50%;
+      background: rgba(188, 178, 152, 0.28);
+    }
+
+    .night-sky__star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    }
+
+    .night-sky__star--bright {
+      box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 14px rgba(255, 252, 238, 0.25);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--star-opacity, 0.6); transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: calc(var(--star-opacity, 0.6) * 0.45); transform: translate(-50%, -50%) scale(0.85); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .night-sky__star--twinkle {
+        animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+        animation-delay: var(--twinkle-delay, 0s);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero__moon-wrap {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(5, 7, 43, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 174, 239, 0.08);
+    }
+
+    .nav__logo {
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream-soft);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav__links a:hover { color: var(--glow-blue); }
+
+    .nav__social { display: inline-flex; align-items: center; }
+    .nav__donate { display: inline-flex; align-items: center; letter-spacing: normal; text-transform: none; }
+    .nav__donate img { display: block; height: 36px; border: 0; }
+    .nav__donate:hover { opacity: 0.85; color: inherit; }
+
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav__toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream);
+      margin: 6px 0;
+    }
+
+    .page-hero {
+      position: relative;
+      z-index: 5;
+      padding: 7rem 2rem 3rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-hero__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero__title {
+      font-family: var(--heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero__desc {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--cream-soft);
+      font-weight: 300;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .booking {
+      position: relative;
+      z-index: 5;
+      padding: 2rem 2rem 6rem;
+    }
+
+    .booking__inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .booking__price {
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .booking-form__label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .booking-form__optional {
+      font-weight: 300;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      color: var(--cream-muted);
+    }
+
+    .booking-form input,
+    .booking-form textarea {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(10, 14, 69, 0.5);
+      border: 1px solid rgba(0, 174, 239, 0.15);
+      color: var(--cream);
+      font-family: var(--body);
+      font-size: 0.85rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .booking-form input::placeholder,
+    .booking-form textarea::placeholder { color: var(--cream-muted); }
+
+    .booking-form input:focus,
+    .booking-form textarea:focus {
+      border-color: var(--glow-blue);
+      box-shadow: 0 0 20px var(--glow-blue-dim);
+    }
+
+    .booking-form input:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .booking-form input[type="date"] {
+      color-scheme: dark;
+    }
+
+    .booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      opacity: 1;
+      width: 0.875rem;
+      height: 0.875rem;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300AEEF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    .booking-form input[type="date"]:disabled::-webkit-calendar-picker-indicator {
+      opacity: 0.35;
+    }
+
+    .booking-form input[type="date"]::-moz-calendar-picker-indicator {
+      filter: invert(56%) sepia(89%) saturate(2476%) hue-rotate(163deg) brightness(98%) contrast(101%);
+      cursor: pointer;
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    .booking-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .booking-form input[type="file"] {
+      padding: 0.85rem 1.25rem;
+      font-size: 0.8rem;
+      color: var(--cream-soft);
+    }
+
+    .booking-form input[type="file"]::file-selector-button {
+      margin-right: 1rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(0, 174, 239, 0.35);
+      background: rgba(0, 174, 239, 0.1);
+      color: var(--glow-blue);
+      font-family: var(--body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .booking-form__checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--cream-soft);
+      cursor: pointer;
+    }
+
+    .booking-form__checkbox input {
+      width: auto;
+      accent-color: var(--glow-blue);
+    }
+
+    .booking-form__checkbox--terms {
+      align-items: flex-start;
+      margin-top: 0.75rem;
+      line-height: 1.65;
+    }
+
+    .booking-form__checkbox--terms input {
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .booking-form__note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--cream-muted);
+      line-height: 1.6;
+      margin-top: -0.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 0.85rem 2rem;
+      font-family: var(--body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 0;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid rgba(0, 174, 239, 0.4);
+      background: linear-gradient(135deg, rgba(0, 174, 239, 0.2), rgba(211, 84, 0, 0.15));
+      color: var(--cream);
+      margin-top: 0.5rem;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, rgba(0, 174, 239, 0.35), rgba(211, 84, 0, 0.25));
+      box-shadow: 0 0 40px var(--glow-blue-soft);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(211, 84, 0, 0.12);
+      background: linear-gradient(180deg, rgba(5, 7, 43, 0.35) 0%, rgba(8, 10, 38, 0.92) 45%, var(--sky-deep) 100%);
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer__contact a {
+      font-size: 0.75rem;
+      color: var(--glow-blue);
+      text-decoration: none;
+    }
+
+    .footer__contact a:hover { color: var(--cream); }
+
+    .footer__contact span { color: rgba(0, 174, 239, 0.25); font-size: 0.65rem; }
+
+    .footer__copy {
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--cream-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background: rgba(5, 7, 43, 0.97);
+        backdrop-filter: blur(20px);
+        transition: right 0.4s var(--ease);
+        border-left: 1px solid rgba(0, 174, 239, 0.1);
+      }
+
+      .nav__links.open { right: 0; }
+      .nav__toggle { display: block; }
+      .page-hero, .booking { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="night-sky" id="night-sky" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo">Aspera Astra</a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#testimonials">Testimonials</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact Me</a></li>
+      <li>
+        <a href="https://www.instagram.com/asperaastra_healingspirit" class="nav__social" target="_blank" rel="noopener noreferrer">Follow Me</a>
+      </li>
+      <li>
+        <a href="https://ko-fi.com/V5K32149ZX" class="nav__donate" target="_blank" rel="noopener noreferrer" aria-label="Donate on Ko-fi">
+          <img src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" height="36" alt="Buy Me a Coffee at ko-fi.com">
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <header class="page-hero">
+    <div class="page-hero__moon-wrap" aria-hidden="true">
+      <div class="page-hero__moon"></div>
+    </div>
+    <p class="page-hero__label">Full Reading · Via WhatsApp Chat</p>
+    <h1 class="page-hero__title">Book Your Session</h1>
+    <p class="page-hero__desc">
+      Please share the details below. After you submit, you'll continue to secure Stripe checkout
+      to complete your booking ($100 US dollars).
+    </p>
+  </header>
+
+  <section class="booking">
+    <div class="booking__inner">
+      <p class="booking__price">$100 US dollars · 30-minute WhatsApp chat</p>
+
+      <form
+        class="booking-form"
+        id="complete-chat-form"
+        action="https://formsubmit.co/aspera.astra.readings@gmail.com"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="_subject" value="Full Reading via WhatsApp Chat — booking form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="reading" value="Full Reading — Via WhatsApp Chat ($100 US dollars)">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div>
+          <label class="booking-form__label" for="full-name">Full Name</label>
+          <input type="text" id="full-name" name="full_name" placeholder="Full Name" required autocomplete="name">
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="date_of_birth" required aria-describedby="dob-unknown-label">
+          <label class="booking-form__checkbox" id="dob-unknown-label">
+            <input type="checkbox" id="dob-unknown" name="dob_unknown" value="yes">
+            Unknown
+          </label>
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="birth-place">Place of Birth</label>
+          <input type="text" id="birth-place" name="place_of_birth" placeholder="City, region, country" required>
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="photo">Picture of Yourself</label>
+          <input type="file" id="photo" name="photo" accept="image/*" required aria-label="Upload a picture of yourself">
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="palms">Pictures of Your Palms</label>
+          <input type="file" id="palms" name="palm_photos" accept="image/*" multiple required aria-label="Upload pictures of your palms">
+          <p class="booking-form__note">You may upload more than one palm photo.</p>
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="instagram">Instagram Handle <span class="booking-form__optional">(optional)</span></label>
+          <input type="text" id="instagram" name="instagram_handle" placeholder="@yourhandle">
+        </div>
+
+        <div>
+          <label class="booking-form__label" for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Share what brings you here and any questions you have..." required></textarea>
+        </div>
+
+        <div>
+          <span class="booking-form__label" id="terms-label">Terms and Conditions</span>
+          <label class="booking-form__checkbox booking-form__checkbox--terms" for="terms" aria-labelledby="terms-label">
+            <input type="checkbox" id="terms" name="terms_conditions" value="accepted" required>
+            <span>
+              Check this box if you understand that these readings are entertainment and spiritual guidance purposes only. Readings are not intended to provide medical, legal, financial, or psychological advice, and no specific outcomes are guaranteed.
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn" id="submit-btn">Submit &amp; Continue to Payment</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__contact">
+      <a href="mailto:aspera.astra.readings@gmail.com">aspera.astra.readings@gmail.com</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.instagram.com/asperaastra_healingspirit" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+    <p class="footer__copy">&copy; 2026 Aspera Astra · Intuitive Healer</p>
+  </footer>
+
+  <script>
+    const STRIPE_CHECKOUT_URL = 'https://buy.stripe.com/7sY3cu1xEdXK2d47nCew800';
+
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.nav__toggle');
+    const links = document.querySelector('.nav__links');
+    const form = document.getElementById('complete-chat-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const dobInput = document.getElementById('dob');
+    const dobUnknown = document.getElementById('dob-unknown');
+    const termsCheckbox = document.getElementById('terms');
+
+    function updateScrollEffects() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateScrollEffects), { passive: true });
+    updateScrollEffects();
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    dobUnknown.addEventListener('change', () => {
+      dobInput.disabled = dobUnknown.checked;
+      dobInput.required = !dobUnknown.checked;
+      if (dobUnknown.checked) dobInput.value = '';
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      if (!dobUnknown.checked && !dobInput.value) {
+        alert('Please enter your date of birth or check Unknown.');
+        return;
+      }
+
+      const photo = document.getElementById('photo');
+      const palms = document.getElementById('palms');
+      if (!photo.files.length || !palms.files.length) {
+        alert('Please upload a photo of yourself and at least one palm photo.');
+        return;
+      }
+
+      if (!termsCheckbox.checked) {
+        alert('Please accept the Terms and Conditions to continue.');
+        return;
+      }
+
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const formData = new FormData(form);
+      if (dobUnknown.checked) {
+        formData.set('date_of_birth', 'Unknown');
+      }
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/aspera.astra.readings@gmail.com', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData
+        });
+
+        if (!response.ok) throw new Error('Send failed');
+
+        window.location.href = STRIPE_CHECKOUT_URL;
+      } catch (err) {
+        alert('Something went wrong sending your details. Please email aspera.astra.readings@gmail.com directly.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+  <script>
+    (function () {
+      const sky = document.getElementById('night-sky');
+      if (!sky) return;
+
+      const rng = (function (seed) {
+        let state = seed;
+        return function next() {
+          state = (state * 9301 + 49297) % 233280;
+          return state / 233280;
+        };
+      }(Math.floor(window.innerWidth * 13 + window.innerHeight * 7 + 911)));
+
+      const count = Math.min(260, Math.max(140, Math.floor(window.innerWidth * window.innerHeight / 4800)));
+
+      for (let i = 0; i < count; i += 1) {
+        const star = document.createElement('span');
+        const roll = rng();
+        const size = roll > 0.92 ? 3.5 : roll > 0.72 ? 2.75 : roll > 0.4 ? 2 : 1.5;
+        const opacity = 0.28 + rng() * 0.72;
+        let left = rng() * 100;
+        let top = rng() * 100;
+
+        star.className = 'night-sky__star';
+        if (size >= 2.5) star.classList.add('night-sky__star--bright');
+        if (rng() > 0.55) star.classList.add('night-sky__star--twinkle');
+
+        star.style.left = left + '%';
+        star.style.top = top + '%';
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.setProperty('--star-opacity', opacity.toFixed(3));
+        star.style.opacity = opacity.toFixed(3);
+
+        if (star.classList.contains('night-sky__star--twinkle')) {
+          star.style.setProperty('--twinkle-duration', (3 + rng() * 4).toFixed(2) + 's');
+          star.style.setProperty('--twinkle-delay', (rng() * 5).toFixed(2) + 's');
+        }
+
+        sky.appendChild(star);
+      }
+    }());
+  </script>
+</body>
+</html>
