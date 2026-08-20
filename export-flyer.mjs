@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const flyers = [
   { html: 'flyer-post.html', jpg: 'flyer-post.jpg' },
   { html: 'flyer-reddit.html', jpg: 'flyer-reddit.jpg' },
+  { html: 'flyer-sale.html', jpg: 'flyer-sale.jpg' },
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
