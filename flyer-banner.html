@@ -29,8 +29,8 @@
 
     .flyer {
       position: relative;
-      width: 1200px;
-      height: 628px;
+      width: 1080px;
+      height: 260px;
       overflow: hidden;
       color: var(--cream);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
@@ -39,19 +39,19 @@
     .flyer__hero {
       position: absolute;
       inset: 0;
-      background: url('assets/hero.png') center 22% / cover no-repeat;
+      background: url('assets/hero.png') center 12% / cover no-repeat;
     }
 
     .flyer__overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(1, 1, 6, 0.08) 0%, rgba(5, 7, 43, 0.04) 50%, rgba(1, 1, 6, 0.18) 100%);
+        linear-gradient(180deg, rgba(1, 1, 6, 0.1) 0%, rgba(5, 7, 43, 0.04) 50%, rgba(1, 1, 6, 0.16) 100%);
     }
 
     .flyer__frame {
       position: absolute;
-      inset: 24px;
+      inset: 14px;
       z-index: 2;
       border: 1px solid rgba(0, 174, 239, 0.28);
       pointer-events: none;
@@ -60,7 +60,7 @@
     .flyer__frame::before {
       content: '';
       position: absolute;
-      inset: 8px;
+      inset: 6px;
       border: 1px solid rgba(242, 233, 228, 0.1);
     }
 
@@ -73,22 +73,22 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 72px;
+      padding: 0 40px;
     }
 
     .flyer__eyebrow {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 500;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--glow-blue);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
     }
 
     .flyer__title {
       font-family: var(--heading);
-      font-size: 84px;
+      font-size: 92px;
       font-weight: 500;
       line-height: 0.95;
       letter-spacing: 0.04em;
@@ -104,8 +104,8 @@
 </head>
 <body>
   <!--
-    Reddit landscape post · 1200 × 628 px
-    Same artwork, fonts, and copy as the name-only post, sized for a wide Reddit post.
+    Reddit banner · 1080 × 260 px
+    Same width as the original post, cropped to a short banner so the type stays large.
   -->
   <article class="flyer" aria-label="Aspera Astra banner">
     <div class="flyer__hero" aria-hidden="true"></div>
