@@ -39,14 +39,15 @@
     .flyer__hero {
       position: absolute;
       inset: 0;
-      background: url('assets/hero.png') center 12% / cover no-repeat;
+      background: url('assets/hero.png') center 28% / cover no-repeat;
+      filter: brightness(1.38) contrast(1.08) saturate(1.12);
     }
 
     .flyer__overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(1, 1, 6, 0.1) 0%, rgba(5, 7, 43, 0.04) 50%, rgba(1, 1, 6, 0.16) 100%);
+        radial-gradient(ellipse 70% 90% at 50% 45%, rgba(40, 90, 180, 0.18) 0%, transparent 70%);
     }
 
     .flyer__frame {
