@@ -5,10 +5,10 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const flyers = [
-  { html: 'flyer-post.html', jpg: 'flyer-post.jpg', width: 1280, height: 1280 },
-  { html: 'flyer-reddit.html', jpg: 'flyer-reddit.jpg', width: 1280, height: 1280 },
-  { html: 'flyer-sale.html', jpg: 'flyer-sale.jpg', width: 1280, height: 1280 },
-  { html: 'flyer-banner.html', jpg: 'flyer-banner.jpg', width: 900, height: 400 },
+  { html: 'flyer-post.html', jpg: 'flyer-post.jpg', width: 1280, height: 1280, scale: 2 },
+  { html: 'flyer-reddit.html', jpg: 'flyer-reddit.jpg', width: 1280, height: 1280, scale: 2 },
+  { html: 'flyer-sale.html', jpg: 'flyer-sale.jpg', width: 1280, height: 1280, scale: 2 },
+  { html: 'flyer-banner.html', jpg: 'flyer-banner.jpg', width: 900, height: 400, scale: 1 },
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });
@@ -18,7 +18,7 @@ for (const flyer of flyers) {
   await page.setViewport({
     width: flyer.width,
     height: flyer.height,
-    deviceScaleFactor: 2,
+    deviceScaleFactor: flyer.scale,
   });
   const filePath = path.join(__dirname, flyer.html);
   await page.goto(`file://${filePath}`, { waitUntil: 'networkidle0' });
