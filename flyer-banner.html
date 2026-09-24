@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aspera Astra · Reddit Post Flyer</title>
+  <title>Aspera Astra · Banner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
 
     .flyer {
       position: relative;
-      width: 1080px;
-      height: 1080px;
+      width: 740px;
+      height: 193px;
       overflow: hidden;
       color: var(--cream);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
@@ -39,20 +39,20 @@
     .flyer__hero {
       position: absolute;
       inset: 0;
-      background: url('assets/hero.png') center / cover no-repeat;
+      background: url('assets/hero.png') center 28% / cover no-repeat;
+      filter: brightness(1.38) contrast(1.08) saturate(1.12);
     }
 
     .flyer__overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(1, 1, 6, 0.06) 0%, rgba(5, 7, 43, 0.02) 34%, rgba(5, 7, 43, 0.2) 52%, rgba(1, 1, 6, 0.42) 100%),
-        radial-gradient(ellipse 90% 70% at 50% 45%, transparent 0%, rgba(1, 1, 6, 0.1) 100%);
+        radial-gradient(ellipse 70% 90% at 50% 45%, rgba(40, 90, 180, 0.18) 0%, transparent 70%);
     }
 
     .flyer__frame {
       position: absolute;
-      inset: 36px;
+      inset: 8px;
       z-index: 2;
       border: 1px solid rgba(0, 174, 239, 0.28);
       pointer-events: none;
@@ -61,37 +61,40 @@
     .flyer__frame::before {
       content: '';
       position: absolute;
-      inset: 10px;
+      inset: 4px;
       border: 1px solid rgba(242, 233, 228, 0.1);
     }
 
     .flyer__header {
       position: absolute;
-      top: 68px;
-      left: 72px;
-      right: 72px;
+      inset: 0;
       z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 0 24px;
     }
 
     .flyer__eyebrow {
-      font-size: 24px;
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.34em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--glow-blue);
-      margin-bottom: 12px;
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+      margin-bottom: 2px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
     }
 
     .flyer__title {
       font-family: var(--heading);
-      font-size: 100px;
+      font-size: 67px;
       font-weight: 500;
-      line-height: 0.95;
+      line-height: 0.92;
       letter-spacing: 0.04em;
       margin-bottom: 0;
-      text-shadow: 0 4px 32px rgba(0, 0, 0, 0.85), 0 0 48px rgba(0, 174, 239, 0.15);
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 174, 239, 0.15);
     }
 
     @media print {
@@ -102,10 +105,10 @@
 </head>
 <body>
   <!--
-    Reddit square post flyer · 1080 × 1080 px
-    Same background, fonts, and header placement as the original — name only.
+    Reddit composer banner · 740 × 193 px
+    Same crop as the screenshot, sized to 740px wide.
   -->
-  <article class="flyer" aria-label="Aspera Astra Reddit promotional flyer">
+  <article class="flyer" aria-label="Aspera Astra banner">
     <div class="flyer__hero" aria-hidden="true"></div>
     <div class="flyer__overlay" aria-hidden="true"></div>
     <div class="flyer__frame" aria-hidden="true"></div>
