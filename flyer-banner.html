@@ -29,8 +29,8 @@
 
     .flyer {
       position: relative;
-      width: 1080px;
-      height: 260px;
+      width: 706px;
+      height: 184px;
       overflow: hidden;
       color: var(--cream);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
@@ -51,7 +51,7 @@
 
     .flyer__frame {
       position: absolute;
-      inset: 14px;
+      inset: 8px;
       z-index: 2;
       border: 1px solid rgba(0, 174, 239, 0.28);
       pointer-events: none;
@@ -60,7 +60,7 @@
     .flyer__frame::before {
       content: '';
       position: absolute;
-      inset: 6px;
+      inset: 4px;
       border: 1px solid rgba(242, 233, 228, 0.1);
     }
 
@@ -73,27 +73,27 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 40px;
+      padding: 0 24px;
     }
 
     .flyer__eyebrow {
-      font-size: 20px;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--glow-blue);
-      margin-bottom: 6px;
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+      margin-bottom: 2px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
     }
 
     .flyer__title {
       font-family: var(--heading);
-      font-size: 92px;
+      font-size: 64px;
       font-weight: 500;
-      line-height: 0.95;
+      line-height: 0.92;
       letter-spacing: 0.04em;
       margin-bottom: 0;
-      text-shadow: 0 4px 32px rgba(0, 0, 0, 0.85), 0 0 48px rgba(0, 174, 239, 0.15);
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 0 28px rgba(0, 174, 239, 0.15);
     }
 
     @media print {
@@ -104,8 +104,8 @@
 </head>
 <body>
   <!--
-    Reddit banner · 1080 × 260 px
-    Same width as the original post, cropped to a short banner so the type stays large.
+    Reddit composer banner · 706 × 184 px
+    Cropped to the width and height of the Reddit image slot screenshot.
   -->
   <article class="flyer" aria-label="Aspera Astra banner">
     <div class="flyer__hero" aria-hidden="true"></div>
