@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspera Astra · Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --glow-blue: #00AEEF;
+      --cream: #F2E9E4;
+      --heading: 'Cormorant Garamond', Georgia, serif;
+      --body: 'Montserrat', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      font-family: var(--body);
+      padding: 2rem;
+    }
+
+    .flyer {
+      position: relative;
+      width: 1920px;
+      height: 480px;
+      overflow: hidden;
+      color: var(--cream);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .flyer__hero {
+      position: absolute;
+      inset: 0;
+      background: url('assets/hero.png') center 18% / cover no-repeat;
+    }
+
+    .flyer__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(1, 1, 6, 0.08) 0%, rgba(5, 7, 43, 0.04) 50%, rgba(1, 1, 6, 0.18) 100%);
+    }
+
+    .flyer__frame {
+      position: absolute;
+      inset: 22px;
+      z-index: 2;
+      border: 1px solid rgba(0, 174, 239, 0.28);
+      pointer-events: none;
+    }
+
+    .flyer__frame::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(242, 233, 228, 0.1);
+    }
+
+    .flyer__header {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 72px;
+    }
+
+    .flyer__eyebrow {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--glow-blue);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .flyer__title {
+      font-family: var(--heading);
+      font-size: 92px;
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      margin-bottom: 0;
+      text-shadow: 0 4px 32px rgba(0, 0, 0, 0.85), 0 0 48px rgba(0, 174, 239, 0.15);
+    }
+
+    @media print {
+      body { padding: 0; background: #000; }
+      .flyer { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Wide banner · 1920 × 480 px
+    Same artwork, fonts, and copy as the name-only post, cropped to a banner.
+  -->
+  <article class="flyer" aria-label="Aspera Astra banner">
+    <div class="flyer__hero" aria-hidden="true"></div>
+    <div class="flyer__overlay" aria-hidden="true"></div>
+    <div class="flyer__frame" aria-hidden="true"></div>
+
+    <div class="flyer__header">
+      <p class="flyer__eyebrow">Intuitive energy reader / Medium</p>
+      <h1 class="flyer__title">Aspera Astra</h1>
+    </div>
+  </article>
+</body>
+</html>
