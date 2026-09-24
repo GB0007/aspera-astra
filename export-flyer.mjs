@@ -8,7 +8,7 @@ const flyers = [
   { html: 'flyer-post.html', jpg: 'flyer-post.jpg', width: 1280, height: 1280 },
   { html: 'flyer-reddit.html', jpg: 'flyer-reddit.jpg', width: 1280, height: 1280 },
   { html: 'flyer-sale.html', jpg: 'flyer-sale.jpg', width: 1280, height: 1280 },
-  { html: 'flyer-banner.html', jpg: 'flyer-banner.jpg', width: 2200, height: 800 },
+  { html: 'flyer-banner.html', jpg: 'flyer-banner.jpg', width: 1400, height: 900 },
 ];
 
 const browser = await puppeteer.launch({ headless: 'new' });

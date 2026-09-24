@@ -29,8 +29,8 @@
 
     .flyer {
       position: relative;
-      width: 1920px;
-      height: 480px;
+      width: 1200px;
+      height: 628px;
       overflow: hidden;
       color: var(--cream);
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
@@ -39,7 +39,7 @@
     .flyer__hero {
       position: absolute;
       inset: 0;
-      background: url('assets/hero.png') center 18% / cover no-repeat;
+      background: url('assets/hero.png') center 22% / cover no-repeat;
     }
 
     .flyer__overlay {
@@ -51,7 +51,7 @@
 
     .flyer__frame {
       position: absolute;
-      inset: 22px;
+      inset: 24px;
       z-index: 2;
       border: 1px solid rgba(0, 174, 239, 0.28);
       pointer-events: none;
@@ -77,9 +77,9 @@
     }
 
     .flyer__eyebrow {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 500;
-      letter-spacing: 0.34em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--glow-blue);
       margin-bottom: 10px;
@@ -88,7 +88,7 @@
 
     .flyer__title {
       font-family: var(--heading);
-      font-size: 92px;
+      font-size: 84px;
       font-weight: 500;
       line-height: 0.95;
       letter-spacing: 0.04em;
@@ -104,8 +104,8 @@
 </head>
 <body>
   <!--
-    Wide banner · 1920 × 480 px
-    Same artwork, fonts, and copy as the name-only post, cropped to a banner.
+    Reddit landscape post · 1200 × 628 px
+    Same artwork, fonts, and copy as the name-only post, sized for a wide Reddit post.
   -->
   <article class="flyer" aria-label="Aspera Astra banner">
     <div class="flyer__hero" aria-hidden="true"></div>
